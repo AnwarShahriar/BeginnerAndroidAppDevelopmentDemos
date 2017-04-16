@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,16 +15,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonSubmit = (Button) findViewById(R.id.button_submit);
-
-        EventListener listener = new EventListener();
-        buttonSubmit.setOnClickListener(listener);
+        buttonSubmit.setOnClickListener(this);
     }
 
-    private class EventListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(getApplicationContext(), "Baishakhi", Toast.LENGTH_LONG).show();
-        }
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(this, "blablabla", Toast.LENGTH_SHORT).show();
     }
 }
