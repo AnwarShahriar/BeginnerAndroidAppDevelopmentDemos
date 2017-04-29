@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActivityLifeCycle</string>
+    <string name="hello_name">Hello World!</string>
+    <string name="submit">Submit</string>
+</resources>
