@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder> {
+    private static final String TAG = "NameAdapter";
 
     List<String> names;
     int i = 1;
@@ -26,7 +27,8 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
 
     @Override
     public NameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d("NameAdapter", "Row number: " + i);
+        Log.d(TAG, "Hash" + parent);
+        Log.d(TAG, "Row number: " + i);
         i++;
         View nameViewItem =
                 LayoutInflater
@@ -40,10 +42,8 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
 
     @Override
     public void onBindViewHolder(NameViewHolder holder, int position) {
-        View view = holder.itemView;
-        TextView textName = (TextView) view.findViewById(R.id.text_name);
         String name = names.get(position);
-        textName.setText(name);
+        holder.bind(name);
     }
 
     @Override
@@ -52,9 +52,15 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
     }
 
     public class NameViewHolder extends RecyclerView.ViewHolder {
+        TextView textName;
 
         public NameViewHolder(View itemView) {
             super(itemView);
+            textName = (TextView) itemView.findViewById(R.id.text_name);
+        }
+
+        void bind(String name) {
+            textName.setText(name);
         }
     }
 }
