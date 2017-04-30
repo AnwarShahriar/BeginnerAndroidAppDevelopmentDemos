@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         listViewNames.setLayoutManager(linearLayoutManager);
 
-        final NameAdapter adapter = new NameAdapter();
+        final NameAdapter adapter = new NameAdapter(getNames());
         listViewNames.addItemDecoration(
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         listViewNames.setAdapter(adapter);
@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         names.add("Juboraj");
         names.add("Rumi");
         names.add("Faisal");
+        for (int i = 0; i < 20; i++) {
+            names.add("Row name - " + (i + 1));
+        }
         return names;
     }
 }

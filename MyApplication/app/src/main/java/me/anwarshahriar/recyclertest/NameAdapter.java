@@ -1,6 +1,7 @@
 package me.anwarshahriar.recyclertest;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,10 @@ import java.util.List;
 public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder> {
 
     List<String> names;
+    int i = 1;
 
-    public NameAdapter() {
-        names = new ArrayList<>();
+    public NameAdapter(List<String> names) {
+        this.names = names;
     }
 
     public void addName(String name) {
@@ -24,12 +26,14 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
 
     @Override
     public NameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("NameAdapter", "Row number: " + i);
+        i++;
         View nameViewItem =
                 LayoutInflater
                         .from(parent.getContext())
                         .inflate(R.layout.name_item,
-                                 parent,
-                                 false);
+                                parent,
+                                false);
         NameViewHolder holder = new NameViewHolder(nameViewItem);
         return holder;
     }
