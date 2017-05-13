@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         student.setName(name);
 
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("student", student);
+        intent.putExtra("student", Parcels.wrap(student));
         //startActivity(intent);
         startActivityForResult(intent, EXPECT_NAME_BACK);
     }
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == EXPECT_NAME_BACK) {
-                Student student = data.getParcelableExtra("nafis");
+                Student student = Parcels.unwrap(data.getParcelableExtra("nafis"));
                 fieldName.setText(student.getName());
             }
         }

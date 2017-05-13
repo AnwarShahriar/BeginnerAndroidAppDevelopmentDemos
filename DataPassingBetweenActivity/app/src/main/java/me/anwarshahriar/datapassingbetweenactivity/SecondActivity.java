@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.parceler.Parcels;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -32,14 +34,14 @@ public class SecondActivity extends AppCompatActivity {
         Student nafis = new Student();
         nafis.setName("Nafis");
         Intent intent = new Intent();
-        intent.putExtra("nafis", nafis);
+        intent.putExtra("nafis", Parcels.wrap(nafis));
         setResult(RESULT_OK, intent);
         finish();
     }
 
     private void receiveName() {
         Intent receiver = getIntent();
-        Student student = receiver.getParcelableExtra("student");
+        Student student = Parcels.unwrap(receiver.getParcelableExtra("student"));
         textName.setText(student.getName());
     }
 }
