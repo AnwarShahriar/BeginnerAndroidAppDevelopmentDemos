@@ -10,7 +10,8 @@
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Sign In"
-        android:onClick="signIn"/>
+        android:background="@drawable/btn_google_signin_light_normal"
+        android:text="Sign in with Google"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
